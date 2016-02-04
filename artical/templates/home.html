@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load custom_markdown %}
+{% block content %}
+    {% for post in post_list %}
+        {{ post.title }}
+		<br/>
+    {% endfor %}
+
+    {% if post_list.object_list and post_list.paginator.num_pages > 1 %}
+      
+		{% if post_list.has_previous %}
+			<li><a href="?page={{ post_list.previous_page_number }}">preview</a></li>
+		{% endif %}
+		
+		{% if post_list.has_next %}
+			<li><a href="?page={{ post_list.next_page_number }}">next</a></li>
+		{% endif %}
+    {% endif %}
+{% endblock %}
